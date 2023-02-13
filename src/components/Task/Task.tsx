@@ -4,7 +4,7 @@ interface TaskProps {
   todo: TodoStructure;
 }
 
-const Task = ({ todo }: TaskProps) => {
+const Task = ({ todo }: TaskProps): JSX.Element => {
   return (
     <>
       <span>{todo.name}</span>

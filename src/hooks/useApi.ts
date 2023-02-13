@@ -7,7 +7,9 @@ const useApi = () => {
   const dispatch = useAppDispatch();
 
   const getTodos = useCallback(async () => {
-    const response = await fetch(process.env.REACT_APP_API_URL!);
+    const response = await fetch(
+      "https://two02301-w6ch1-todos-api-inge-heeringa.onrender.com/todos"
+    );
 
     const todos = (await response.json()) as TodosStructure;
 
