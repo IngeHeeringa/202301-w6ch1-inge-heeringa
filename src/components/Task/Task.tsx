@@ -7,7 +7,7 @@ interface TaskProps {
 const Task = ({ todo }: TaskProps) => {
   return (
     <>
-      <span></span>
+      <span>{todo.name}</span>
     </>
   );
 };
