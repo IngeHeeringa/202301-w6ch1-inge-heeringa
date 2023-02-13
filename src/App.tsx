@@ -1,8 +1,7 @@
-import Task from "./components/Task/Task";
+import Tasks from "./components/Tasks/Tasks";
 
-const todo = { id: 1, name: "pet cats", isDone: false };
-const App = () => {
-  return <Task todo={todo} />;
+const App = (): JSX.Element => {
+  return <Tasks />;
 };
 
 export default App;
