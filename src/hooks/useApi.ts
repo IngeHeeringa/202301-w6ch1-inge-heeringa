@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { loadTodosActionCreator } from "../store/features/todosSlice";
 import { useAppDispatch } from "../store/hooks";
-import { TodosStructure } from "../types";
+import { TodosStructure } from "../data/types";
 
 const useApi = () => {
   const dispatch = useAppDispatch();
