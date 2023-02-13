@@ -16,9 +16,9 @@
 
 ## COMPONENTS
 
-# TODO LIST
+# TASKS
 
-# TODO
+# TASK
 
 # FORM
 
