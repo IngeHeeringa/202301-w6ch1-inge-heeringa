@@ -3,6 +3,7 @@ import {
   deleteTodoActionCreator,
   loadTodosActionCreator,
   todosReducer,
+  toggleTodoIsDoneActionCreator,
 } from "./todosSlice";
 
 const todos = [
@@ -88,6 +89,32 @@ describe("Given a todosReducer function", () => {
       const createTodoAction = createTodoActionCreator(newTodo);
 
       const newTodos = todosReducer(todos, createTodoAction);
+
+      expect(newTodos).toStrictEqual(expectedTodos);
+    });
+  });
+
+  describe("When it receives a list with a todo 'Buy food' with isDone status false and a toggleTodoIsDone action with a payload of that todo", () => {
+    test("Then it should return that list with the isDone status of 'Buy food' set to true", () => {
+      const todos = [
+        {
+          id: 1,
+          name: "Buy food",
+          isDone: false,
+        },
+      ];
+
+      const expectedTodos = [
+        {
+          id: 1,
+          name: "Buy food",
+          isDone: true,
+        },
+      ];
+
+      const toggleTodoIsDoneAction = toggleTodoIsDoneActionCreator(todos[0]);
+
+      const newTodos = todosReducer(todos, toggleTodoIsDoneAction);
 
       expect(newTodos).toStrictEqual(expectedTodos);
     });
