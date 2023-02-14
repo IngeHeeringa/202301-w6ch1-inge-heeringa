@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import useApi from "../../hooks/useApi";
 import { useAppSelector } from "../../store/hooks";
-import Task from "../Task/Task";
+import Task from "../Todo/Todo";
 
-const Tasks = () => {
+const Todos = () => {
   const { getTodos } = useApi();
 
   useEffect(() => {
@@ -27,4 +27,4 @@ const Tasks = () => {
   );
 };
 
-export default Tasks;
+export default Todos;

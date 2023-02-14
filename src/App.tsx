@@ -1,7 +1,7 @@
-import Tasks from "./components/Tasks/Tasks";
+import Todos from "./components/Todos/Todos";
 
 const App = (): JSX.Element => {
-  return <Tasks />;
+  return <Todos />;
 };
 
 export default App;

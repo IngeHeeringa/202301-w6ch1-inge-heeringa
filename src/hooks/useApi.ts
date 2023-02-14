@@ -1,5 +1,8 @@
 import { useCallback } from "react";
-import { loadTodosActionCreator } from "../store/features/todosSlice";
+import {
+  deleteTodoActionCreator,
+  loadTodosActionCreator,
+} from "../store/features/todos/todosSlice";
 import { useAppDispatch } from "../store/hooks";
 import { TodosStructure } from "../data/types";
 
@@ -14,7 +17,18 @@ const useApi = () => {
     dispatch(loadTodosActionCreator(todos));
   }, [dispatch]);
 
-  return { getTodos };
+  const deleteTodo = useCallback(
+    async (id: number) => {
+      await fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
+        method: "DELETE",
+      });
+
+      dispatch(deleteTodoActionCreator(id));
+    },
+    [dispatch]
+  );
+
+  return { getTodos, deleteTodo };
 };
 
 export default useApi;
