@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import useApi from "../../hooks/useApi";
 import { useAppSelector } from "../../store/hooks";
-import Task from "../Todo/Todo";
+import Todo from "../Todo/Todo";
+import "./Todos.css";
 
 const Todos = () => {
   const { getTodos } = useApi();
@@ -16,10 +17,10 @@ const Todos = () => {
 
   return (
     <>
-      <ul>
+      <ul className="todos">
         {todos.map((todo) => (
-          <li key={todo.id}>
-            <Task todo={todo} />
+          <li className="todos__todo" key={todo.id}>
+            <Todo todo={todo} />
           </li>
         ))}
       </ul>
