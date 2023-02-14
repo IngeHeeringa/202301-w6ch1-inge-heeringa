@@ -3,6 +3,7 @@ import {
   createTodoActionCreator,
   deleteTodoActionCreator,
   loadTodosActionCreator,
+  toggleTodoIsDoneActionCreator,
 } from "../store/features/todos/todosSlice";
 import { useAppDispatch } from "../store/hooks";
 import { TodosStructure, TodoStructure } from "../data/types";
@@ -44,7 +45,24 @@ const useApi = () => {
     [dispatch]
   );
 
-  return { getTodos, deleteTodo, createTodo };
+  const toggleTodoIsDone = useCallback(
+    async (todo: TodoStructure) => {
+      await fetch(`${process.env.REACT_APP_API_URL}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          isDone: !todo.isDone,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+
+      dispatch(toggleTodoIsDoneActionCreator(todo));
+    },
+    [dispatch]
+  );
+
+  return { getTodos, deleteTodo, createTodo, toggleTodoIsDone };
 };
 
 export default useApi;
