@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Checkbox } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { TodoStructure } from "../../data/types";
 import useApi from "../../hooks/useApi";
@@ -8,15 +8,18 @@ interface TodoProps {
   todo: TodoStructure;
 }
 
-const Todo = ({ todo: { id, name } }: TodoProps): JSX.Element => {
-  const { deleteTodo } = useApi();
+const Todo = ({ todo }: TodoProps): JSX.Element => {
+  const { deleteTodo, toggleTodoIsDone } = useApi();
 
   return (
     <div className="todo">
-      <span className="todo__name">{name}</span>
+      <div className="todo-name-wrapper">
+        <Checkbox onClick={() => toggleTodoIsDone(todo)} />
+        <span className="todo__name">{todo.name}</span>
+      </div>
       <Button
         className="todo__delete-button"
-        onClick={() => deleteTodo(id)}
+        onClick={() => deleteTodo(todo.id)}
         variant="outlined"
         endIcon={<DeleteIcon />}
       >

@@ -10,11 +10,13 @@ const Form = () => {
 
   const [todo, setTodo] = useState("");
 
-  const handleChange = (event: any) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     setTodo(event.target.value);
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const newTodo = {
       id: Math.floor(Math.random() * 9999),
