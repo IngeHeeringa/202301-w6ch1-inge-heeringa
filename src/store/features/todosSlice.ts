@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TodosStructure } from "../../data/types";
+import { TodosStructure, TodoStructure } from "../../data/types";
 
 const todosSlice = createSlice({
   name: "todos",
@@ -9,6 +9,8 @@ const todosSlice = createSlice({
       state: TodosStructure,
       action: PayloadAction<TodosStructure>
     ) => [...action.payload],
+    deleteTask: (state: TodosStructure, action: PayloadAction<TodoStructure>) =>
+      state.filter((todo) => todo.id !== action.payload.id),
   },
 });
 

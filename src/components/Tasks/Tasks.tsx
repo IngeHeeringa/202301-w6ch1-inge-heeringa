@@ -15,13 +15,15 @@ const Tasks = () => {
   });
 
   return (
-    <ul>
-      {todos.map((todo) => (
-        <li key={todo.id}>
-          <Task todo={todo} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <Task todo={todo} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
