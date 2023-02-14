@@ -1,5 +1,9 @@
 import { useState } from "react";
 import useApi from "../../hooks/useApi";
+import Button from "@mui/material/Button";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import { TextField } from "@mui/material";
+import "./Form.css";
 
 const Form = () => {
   const { createTodo } = useApi();
@@ -23,9 +27,24 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} type="text" value={todo} />
-      <button type="submit">Add</button>
+    <form className="form" onSubmit={handleSubmit}>
+      <TextField
+        className="form__input"
+        onChange={handleChange}
+        type="text"
+        value={todo}
+        id="outlined-basic"
+        variant="outlined"
+        placeholder="Introduce a task"
+      />
+      <Button
+        className="form__button"
+        type="submit"
+        variant="contained"
+        endIcon={<AddCircleOutlinedIcon />}
+      >
+        Add
+      </Button>
     </form>
   );
 };
