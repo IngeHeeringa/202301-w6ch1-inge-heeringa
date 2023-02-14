@@ -5,13 +5,15 @@ interface TodoProps {
   todo: TodoStructure;
 }
 
-const Todo = ({ todo }: TodoProps): JSX.Element => {
+const Todo = ({ todo: { id, name } }: TodoProps): JSX.Element => {
   const { deleteTodo } = useApi();
 
   return (
     <>
-      <span>{todo.name}</span>
-      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+      <span className="todo__name">{name}</span>
+      <button className="todo__delete-button" onClick={() => deleteTodo(id)}>
+        Delete
+      </button>
     </>
   );
 };

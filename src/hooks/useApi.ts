@@ -1,10 +1,11 @@
 import { useCallback } from "react";
 import {
+  createTodoActionCreator,
   deleteTodoActionCreator,
   loadTodosActionCreator,
 } from "../store/features/todos/todosSlice";
 import { useAppDispatch } from "../store/hooks";
-import { TodosStructure } from "../data/types";
+import { TodosStructure, TodoStructure } from "../data/types";
 
 const useApi = () => {
   const dispatch = useAppDispatch();
@@ -28,7 +29,22 @@ const useApi = () => {
     [dispatch]
   );
 
-  return { getTodos, deleteTodo };
+  const createTodo = useCallback(
+    async (todo: TodoStructure) => {
+      await fetch(`${process.env.REACT_APP_API_URL}`, {
+        method: "POST",
+        body: JSON.stringify(todo),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+
+      dispatch(createTodoActionCreator(todo));
+    },
+    [dispatch]
+  );
+
+  return { getTodos, deleteTodo, createTodo };
 };
 
 export default useApi;

@@ -19,11 +19,12 @@ const Form = () => {
     };
 
     createTodo(newTodo);
+    setTodo("");
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} type="text" />
+      <input onChange={handleChange} type="text" value={todo} />
       <button type="submit">Add</button>
     </form>
   );
