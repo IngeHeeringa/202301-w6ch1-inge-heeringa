@@ -34,5 +34,16 @@ describe("Given a Task component", () => {
 
       expect(deleteButton).toBeInTheDocument();
     });
+
+    test("Then it should show a checkbox to toggle the isDone state of the todo", () => {
+      render(
+        <Provider store={store}>
+          <Task todo={todo} />
+        </Provider>
+      );
+      const checkbox = screen.getByRole("checkbox");
+
+      expect(checkbox).toBeInTheDocument();
+    });
   });
 });

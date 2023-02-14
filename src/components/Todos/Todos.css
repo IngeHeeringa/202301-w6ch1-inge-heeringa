@@ -1,3 +1,9 @@
 .todos__todo {
   padding: 15px 0;
 }
+
+.todo-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
