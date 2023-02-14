@@ -49,9 +49,7 @@ const useApi = () => {
     async (todo: TodoStructure) => {
       await fetch(`${process.env.REACT_APP_API_URL}`, {
         method: "PATCH",
-        body: JSON.stringify({
-          isDone: !todo.isDone,
-        }),
+        body: JSON.stringify({ ...todo, isDone: !todo.isDone }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
