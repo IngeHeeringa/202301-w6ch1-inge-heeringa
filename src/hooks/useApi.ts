@@ -47,7 +47,7 @@ const useApi = () => {
 
   const toggleTodoIsDone = useCallback(
     async (todo: TodoStructure) => {
-      await fetch(`${process.env.REACT_APP_API_URL}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/${todo.id}`, {
         method: "PATCH",
         body: JSON.stringify({ ...todo, isDone: !todo.isDone }),
         headers: {

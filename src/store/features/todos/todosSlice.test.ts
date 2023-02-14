@@ -96,19 +96,16 @@ describe("Given a todosReducer function", () => {
 
   describe("When it receives a list with a todo 'Buy food' with isDone status false and a toggleTodoIsDone action with a payload of that todo", () => {
     test("Then it should return that list with the isDone status of 'Buy food' set to true", () => {
-      const todos = [
-        {
-          id: 1,
-          name: "Buy food",
-          isDone: false,
-        },
-      ];
-
       const expectedTodos = [
         {
           id: 1,
           name: "Buy food",
           isDone: true,
+        },
+        {
+          id: 2,
+          name: "Clean kitchen",
+          isDone: false,
         },
       ];
 
@@ -122,18 +119,15 @@ describe("Given a todosReducer function", () => {
 
   describe("When it receives a list with a todo 'Buy food' with isDone status true and a toggleTodoIsDone action with a payload of that todo", () => {
     test("Then it should return that list with the isDone status of 'Buy food' set to false", () => {
-      const todos = [
+      const expectedTodos = [
         {
           id: 1,
           name: "Buy food",
           isDone: true,
         },
-      ];
-
-      const expectedTodos = [
         {
-          id: 1,
-          name: "Buy food",
+          id: 2,
+          name: "Clean kitchen",
           isDone: false,
         },
       ];
