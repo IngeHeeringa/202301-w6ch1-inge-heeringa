@@ -119,4 +119,30 @@ describe("Given a todosReducer function", () => {
       expect(newTodos).toStrictEqual(expectedTodos);
     });
   });
+
+  describe("When it receives a list with a todo 'Buy food' with isDone status true and a toggleTodoIsDone action with a payload of that todo", () => {
+    test("Then it should return that list with the isDone status of 'Buy food' set to false", () => {
+      const todos = [
+        {
+          id: 1,
+          name: "Buy food",
+          isDone: true,
+        },
+      ];
+
+      const expectedTodos = [
+        {
+          id: 1,
+          name: "Buy food",
+          isDone: false,
+        },
+      ];
+
+      const toggleTodoIsDoneAction = toggleTodoIsDoneActionCreator(todos[0]);
+
+      const newTodos = todosReducer(todos, toggleTodoIsDoneAction);
+
+      expect(newTodos).toStrictEqual(expectedTodos);
+    });
+  });
 });
