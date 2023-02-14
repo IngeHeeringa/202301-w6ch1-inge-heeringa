@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import useApi from "../../hooks/useApi";
 import { useAppSelector } from "../../store/hooks";
-import Task from "../Task/Task";
+import Task from "../Todo/Todo";
 
-const Tasks = () => {
+const Todos = () => {
   const { getTodos } = useApi();
 
   useEffect(() => {
@@ -15,14 +15,16 @@ const Tasks = () => {
   });
 
   return (
-    <ul>
-      {todos.map((todo) => (
-        <li key={todo.id}>
-          <Task todo={todo} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <Task todo={todo} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
-export default Tasks;
+export default Todos;

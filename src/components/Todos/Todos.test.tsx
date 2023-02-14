@@ -3,8 +3,8 @@ import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import { TodosStructure } from "../../data/types";
 import { store } from "../../store";
-import { loadTodosActionCreator } from "../../store/features/todosSlice";
-import Tasks from "./Tasks";
+import { loadTodosActionCreator } from "../../store/features/todos/todosSlice";
+import Todos from "./Todos";
 
 const todos: TodosStructure = [
   { id: 1, name: "go home", isDone: false },
@@ -16,7 +16,7 @@ const AllTheProviders = ({ children }: PropsWithChildren) => {
   return <Provider store={store}>{children}</Provider>;
 };
 
-describe("Given a Tasks component", () => {
+describe("Given a Todos component", () => {
   describe("When rendered", () => {
     test("Then it should show a list of todo tasks", () => {
       const expectedTodosLength = [
@@ -24,7 +24,7 @@ describe("Given a Tasks component", () => {
         { id: 2, name: "", isDone: false },
       ].length;
 
-      render(<Tasks />, { wrapper: AllTheProviders });
+      render(<Todos />, { wrapper: AllTheProviders });
       const todos = screen.getAllByRole("listitem");
 
       expect(todos).toHaveLength(expectedTodosLength);
